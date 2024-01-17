@@ -3,11 +3,17 @@ const Liste = require("../Models/Liste")
 exports.addListe= async(req,res)=>{
     try {
 
-        const found = await Liste.findOne({email : req.body.email} )
-        console.log(found)
-        if(found){
+        const foundbyMail = await Liste.findOne({email : req.body.email} )
+        const foundbyNumber = await Liste.findOne({phoneNumber : req.body.phoneNumber} )
+    
+        if(foundbyMail ){
             return res.status(400).send('email already used')
         }
+        
+        if(foundbyNumber ){
+            return res.status(400).send('phoneNumber already used')
+        }
+        
         
     const newListe = new Liste(req.body)
 

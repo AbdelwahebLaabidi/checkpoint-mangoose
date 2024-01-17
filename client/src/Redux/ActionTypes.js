@@ -1,0 +1,2 @@
+export const GETALLLISTE = 'GETALLLISTE'
+export const GETONELISTE = 'GETONELISTE'
